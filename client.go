@@ -2,18 +2,29 @@ package main
 
 import (
 	"os"
-	f "fmt"
+	"fmt"
 	"net"
 	"bufio"
 )
 
-func main() {
-	f.Println("Hello Client")
-	conn, err := net.Dial("tcp", "0.0.0.0:1234")
+const (
+    CONN_HOST = "127.0.0.1"
+    CONN_PORT = "3333"
+    CONN_TYPE = "tcp"
+)
+
+
+func handleConnection() {
+	conn, err := net.Dial(CONN_TYPE, CONN_HOST + ":" + CONN_PORT)
 	if err != nil {
-		f.Println(err)
+		fmt.Println(err)
 		os.Exit(1)
 	}
-	f.Println(conn, "GET / HTTP/1.0\r\n")
-	_, err = bufio.NewReader(conn).ReadString('\n')
+	status, err := bufio.NewReader(conn).ReadString('\n')
+	fmt.Println("Receive from: ",conn.RemoteAddr() ,status)
+}
+
+func main() {
+	fmt.Println("Hello I'm goClient")
+	handleConnection()
 }

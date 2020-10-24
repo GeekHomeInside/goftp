@@ -1,26 +1,34 @@
 package main
 
 import (
-	f "fmt"
+	"fmt"
 	"net"
 )
 
+const (
+    CONN_HOST = "127.0.0.1"
+    CONN_PORT = "3333"
+	CONN_TYPE = "tcp"
+)
+
+
 func handleConnection(conn net.Conn) {
-	f.Fprintf(conn, "Hello Caller!")
-	// do more stuff with conn
+	fmt.Println("Connexion OK\n")
+	fmt.Fprintf(conn, "Hello Caller!")
+	fmt.Println("recived from:\n", conn.RemoteAddr())
 	conn.Close()
   }
 
 func main() {
-	f.Println("Hello Server")
-	ln, err := net.Listen("tcp", "127.0.0.1:1234")
+	fmt.Println("Hello I'm goServer")
+	ln, err := net.Listen(CONN_TYPE, CONN_HOST + ":" + CONN_PORT)
 	if err != nil {
-		f.Println(err)
+		fmt.Println(err)
 	}
 	for {
 		conn, err := ln.Accept()
 		if err != nil {
-			f.Println(err)
+			fmt.Println(err)
 		}
 		go handleConnection(conn)
 	}

@@ -14,13 +14,13 @@ const (
 
 func handleConnection(conn net.Conn) {
 	fmt.Println("Connexion OK\n")
-	fmt.Fprintf(conn, "Hello Caller!")
+	fmt.Fprintf(conn, "Hello Caller!, I'm GoFTP Server :)")
 	fmt.Println("recived from:\n", conn.RemoteAddr())
 	conn.Close()
   }
 
 func main() {
-	fmt.Println("Hello I'm goServer")
+	fmt.Println("Hello I'm GoFTP Server")
 	ln, err := net.Listen(CONN_TYPE, CONN_HOST + ":" + CONN_PORT)
 	if err != nil {
 		fmt.Println(err)

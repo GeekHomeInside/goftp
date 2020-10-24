@@ -4,7 +4,12 @@
 *.dll
 *.so
 *.dylib
-**/*.go
+
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
 
 # Test binary, built with `go test -c`
 *.test

@@ -11,9 +11,9 @@ func handleConnection(conn net.Conn) {
 	conn.Close()
   }
 
-func server() {
+func main() {
 	f.Println("Hello Server")
-	ln, err := net.Listen("tcp", "*:1234")
+	ln, err := net.Listen("tcp", "127.0.0.1:1234")
 	if err != nil {
 		f.Println(err)
 	}

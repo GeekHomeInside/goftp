@@ -3,33 +3,53 @@ package main
 import (
 	"fmt"
 	"net"
+	"bufio"
+	"strings"
+	"os"
 )
 
-const (
-    CONN_HOST = "127.0.0.1"
-    CONN_PORT = "3333"
-	CONN_TYPE = "tcp"
-)
+func handleConnection(CONN_PORT string) {
+	fmt.Println("Ready to handle connexion\n")
+	ln, err := net.Listen("tcp", CONN_PORT)
 
+	if err != nil {
+		fmt.Println("Exiting TCP server cause by:")
+		fmt.Println(err)
+		return
+	}
 
-func handleConnection(conn net.Conn) {
-	fmt.Println("Connexion OK\n")
-	fmt.Fprintf(conn, "Hello Caller!, I'm GoFTP Server :)")
-	fmt.Println("recived from:\n", conn.RemoteAddr())
-	conn.Close()
-  }
+	defer ln.Close()
+
+	conn, err := ln.Accept()
+	if err != nil {
+		fmt.Println("Exiting TCP server cause by:")
+		fmt.Println(err)
+		return
+	}
+
+	for {
+		netData, err := bufio.NewReader(conn).ReadString('\n')
+		if err != nil {
+				fmt.Println("Exiting TCP server cause by:")
+				fmt.Println(err)
+				return
+		}
+		if strings.TrimSpace(string(netData)) == "STOP" {
+				fmt.Println("Exiting TCP server!")
+				return
+		}
+		fmt.Print("-> ", string(netData))
+		conn.Write([]byte("goFTP Server received: " + netData))
+	}
+}
 
 func main() {
+	arguments := os.Args
+	if len(arguments) == 1 {
+			fmt.Println("Please provide port number")
+			return
+	}
 	fmt.Println("Hello I'm GoFTP Server")
-	ln, err := net.Listen(CONN_TYPE, CONN_HOST + ":" + CONN_PORT)
-	if err != nil {
-		fmt.Println(err)
-	}
-	for {
-		conn, err := ln.Accept()
-		if err != nil {
-			fmt.Println(err)
-		}
-		go handleConnection(conn)
-	}
+	CONN_PORT := ":" + arguments[1]
+	handleConnection(CONN_PORT)
 }

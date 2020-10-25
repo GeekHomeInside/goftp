@@ -21,25 +21,34 @@ make build
 - launch the server
 
 ```sh
-➜ ./server
+➜ ./server 3333
 Hello I'm GoFTP Server
+Ready to handle connexion
 ```
 
 - launch client
 
 ```sh
-➜ ./client 
+➜ ./client 127.0.0.1:3333
 Hello I'm goClient
-Receive from:  127.0.0.1:3333 Hello Caller!, I'm GoFTP Server :)
+>> 
 ```
 
 - Now look Server side to see the connexion between server and client
 
-```sh
-➜ ./server
-Hello I'm GoFTP Server
-Connexion OK
-
-recived from:
- 127.0.0.1:43106
+```sh client
+>> test
+->: goFTP Server received: test
 ```
+
+```sh server
+-> test
+```
+
+# How to stop the server
+
+```sh
+>> STOP
+```
+
+or `CTRL+C`

@@ -9,13 +9,7 @@ import (
 )
 
 
-func handleConnection(CONN_CONFIG string) {
-	conn, err := net.Dial("tcp", CONN_CONFIG)
-	if err != nil {
-		fmt.Println("Exiting TCP server cause by:")
-		fmt.Println(err)
-		os.Exit(1)
-	}
+func handleConnection(conn net.Conn) {
 	for {
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Print(">> ")
@@ -34,13 +28,19 @@ func handleConnection(CONN_CONFIG string) {
 func main() {
 	arguments := os.Args
 	if len(arguments) == 1 {
-		fmt.Println("Please provide host:port.")
-		return
+		fmt.Println("Please provide host:port")
+		os.Exit(1)
 	}
-	CONN_CONFIG := arguments[1]
-
-	fmt.Println("Hello I'm goClient")
 	
-	handleConnection(CONN_CONFIG)
+	fmt.Println("Hello I'm goFTP client ")
 
+	CONN_CONFIG := arguments[1]
+	conn, err := net.Dial("tcp", CONN_CONFIG)
+	if err != nil {
+		fmt.Println("Exiting TCP server cause by:")
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	fmt.Println("Connexion OK")
+	handleConnection(conn)
 }

@@ -2,7 +2,7 @@
 
 This repository is used to learn how to code in golang.
 
-- [RFC 999](https://tools.ietf.org/html/rfc959)
+- [RFC 959](https://tools.ietf.org/html/rfc959)
 
 I try to provide:
 

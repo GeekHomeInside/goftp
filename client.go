@@ -9,12 +9,9 @@ import (
 func main() {
 	arguments := os.Args
 	if len(arguments) == 1 {
-		fmt.Println("Please provide host:port.")
-		return
+		fmt.Println("Please provide host:port")
+		os.Exit(1)
 	}
-	CONN_CONFIG := arguments[1]
-
-	fmt.Println("Hello I'm goClient")
 	
 	client.HandleConnection(CONN_CONFIG)
 }

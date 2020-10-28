@@ -1,3 +1,3 @@
 build:
-	go build client.go
-	go build server.go
+	go build -o goFTP-client client.go
+	go build -o goFTP-server server.go

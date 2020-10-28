@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func handleConnection(CONN_PORT string) {
+func HandleConnection(CONN_PORT string) {
 	fmt.Println("Ready to handle connexion")
 	ln, err := net.Listen("tcp", CONN_PORT)
 

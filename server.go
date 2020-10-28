@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"src/server"
+	"goftp/server"
 )
 
 func main() {
@@ -14,5 +14,5 @@ func main() {
 	}
 	fmt.Println("Hello I'm GoFTP Server")
 	CONN_PORT := ":" + arguments[1]
-	server.handleConnection(CONN_PORT)
+	server.HandleConnection(CONN_PORT)
 }

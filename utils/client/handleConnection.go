@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func handleConnection(CONN_CONFIG string) {
+func HandleConnection(CONN_CONFIG string) {
 	conn, err := net.Dial("tcp", CONN_CONFIG)
 	if err != nil {
 		fmt.Println("Exiting TCP server cause by:")

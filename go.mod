@@ -1,3 +1,3 @@
-module vendor
+module goftp
 
 go 1.15

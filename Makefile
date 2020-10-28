@@ -1,3 +1,3 @@
 build:
-	go build src/client/client.go
-	go build src/server.go
+	go build client.go
+	go build server.go

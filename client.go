@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 	"fmt"
-	"src/client"
+	"goftp/utils/client"
 )
 
 func main() {
@@ -16,5 +16,5 @@ func main() {
 
 	fmt.Println("Hello I'm goClient")
 	
-	client.handleConnection(CONN_CONFIG)
+	client.HandleConnection(CONN_CONFIG)
 }

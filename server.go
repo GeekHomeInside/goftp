@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"goftp/server"
+	"goftp/utils/server"
 )
 
 func main() {

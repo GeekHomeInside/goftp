@@ -13,6 +13,5 @@ func Authentification(username string, password string) {
 	 }
 	if  len(username) > 0 && len(password) > 0 {
 		fmt.Println("You're Authenticate")
-
 	}	
 }

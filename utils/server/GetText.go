@@ -1,9 +1,9 @@
 package server
 
 import (
-	"net"
-	"fmt"
 	"bufio"
+	"fmt"
+	"net"
 	"strings"
 )
 
@@ -12,6 +12,7 @@ func GetText(conn net.Conn) {
 		netData, err := bufio.NewReader(conn).ReadString('\n')
 		if err != nil {
 				fmt.Println("Exiting TCP server cause by:")
+				fmt.Println("Could not read data")
 				fmt.Println(err)
 				return
 		}

@@ -1,10 +1,10 @@
 package client
 
 import (
-	"os"
+	"bufio"
 	"fmt"
 	"net"
-	"bufio"
+	"os"
 	"strings"
 )
 

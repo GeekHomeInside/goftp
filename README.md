@@ -21,8 +21,10 @@ make build
 - launch the server
 
 ```sh
-➜ ./server 3333
+➜ ./goFTP-server -port 3333 -u admin -p password     
 Hello I'm GoFTP Server
+You have a username: admin
+You have a password: password
 Ready to handle connexion
 ```
 
